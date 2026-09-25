@@ -1,0 +1,13 @@
+{
+  "name": "aanet",
+  "displayName": "AANet",
+  "version": "1.0.0",
+  "description": "Coordinate parallel AI agents — locks, budgeted sub-keys, shared storage, messaging — via the AANet MCP server (https://aanet.space).",
+  "author": {
+    "name": "Kuasar137",
+    "url": "https://github.com/Kuasar137"
+  },
+  "homepage": "https://github.com/Kuasar137/aanet-skill",
+  "repository": "https://github.com/Kuasar137/aanet-skill",
+  "license": "MIT"
+}

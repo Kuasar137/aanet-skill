@@ -1,0 +1,14 @@
+{
+  "name": "aanet-tools",
+  "owner": {
+    "name": "Kuasar137",
+    "url": "https://github.com/Kuasar137"
+  },
+  "plugins": [
+    {
+      "name": "aanet",
+      "source": ".",
+      "description": "Coordinate parallel AI agents — locks, budgeted sub-keys, shared storage, messaging — via the AANet MCP server."
+    }
+  ]
+}

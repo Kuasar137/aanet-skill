@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "aanet": {
+      "type": "http",
+      "url": "https://aanet.space/mcp"
+    }
+  }
+}
