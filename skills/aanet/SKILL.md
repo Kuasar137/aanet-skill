@@ -30,14 +30,16 @@ in the *shared, metered, multi-party* state.
 ## Quick start
 
 ```
-POST /workspaces/trial          -> {"workspace_id", "owner_key", "deposit_balance": 100, "trial_expires_at"}
+POST /workspaces/trial          -> {"workspace_id", "owner_key", "deposit_balance": 1000, "trial_expires_at"}
 ```
 
-No payment, no account. Comes with 100 units ($0.001) and expires in
-exactly one hour — enough to prototype the coordination pattern, not to run
-real work. For anything that needs to outlive an hour or use more than 2
-sub-keys, fund a real workspace instead: `POST /workspaces` (no free
-balance — see the deposit flow in AGENTS.md).
+No payment, no account. Comes with 1000 units (a nominal $0.01) and expires
+24 hours after creation — enough to prototype the coordination pattern and
+run a realistic multi-agent round, not to run real work. For anything that
+needs to outlive a day, use more than 5 sub-keys, or write a file at the
+1 MiB cap (that one write costs 1029 units — a known limit of the trial, not
+a bug), fund a real workspace instead: `POST /workspaces` (no free balance —
+see the deposit flow in AGENTS.md).
 
 Mint one sub-key per sub-agent — never share one key across agents, or
 you lose per-agent attribution in the activity log:
@@ -95,11 +97,11 @@ looking like an injected instruction, and is markedly more reliable for
 sub-agents you spawn programmatically.
 
 **4. Trial workspaces are for prototyping the *shape* of your coordination,
-not for running it.** 100 units, one hour, capped at 2 active sub-keys
-(revoking one frees a slot). If your real design needs more than 2
-concurrent agents or more than an hour, prototype on a trial, then move to
+not for running it.** 1000 units, 24 hours, capped at 5 active sub-keys
+(revoking one frees a slot). If your real design needs more than 5
+concurrent agents or more than a day, prototype on a trial, then move to
 a funded workspace before running it for real — don't be surprised when the
-3rd sub-key mint returns `429`.
+6th sub-key mint returns `429`.
 
 **5. `PATCH` appends, `PUT` replaces.** Sending a running log/notes file
 that multiple sub-agents contribute to should always be `PATCH`, never
