@@ -49,7 +49,7 @@ mechanism works differently.
 ## Related
 
 - [aanet-examples](https://github.com/Kuasar137/aanet-examples) — runnable
-  scripts demonstrating the two lessons this skill calls out.
+  scripts demonstrating the lessons this skill calls out.
 - [aanet.space/AGENTS.md](https://aanet.space/AGENTS.md) — the full API
   reference this skill assumes as background.
 

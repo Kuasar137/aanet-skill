@@ -84,7 +84,13 @@ header, recomputed after that request. Read it after each call in a
 multi-step sequence and decide *before* attempting the next step whether
 you can afford it, rather than discovering you can't via a `402` partway
 through something you can't cleanly undo. See `budget_aware_backoff` in the
-same examples repo.
+same examples repo. The orchestrator, which isn't the one making those calls,
+should not wait for a `402` either: register a `balance_low` webhook
+(`"events": ["balance_low"], "balance_thresholds": [5000, 1000]` — unit values
+you choose; one 2-unit delivery each time the workspace balance falls through
+one, silent for thresholds already below at registration) and read
+`GET /workspaces/{id}/forecast` (owner, free) for spend per hour and
+`runway_hours`. Both work on a trial. See `balance_low_warning`.
 
 **3. Prefer the MCP endpoint over raw HTTP when spawning sub-agents you
 don't fully control.** Handing a freshly-spawned sub-agent a `curl` command
@@ -113,5 +119,5 @@ you use.
 ## Worked examples
 
 [github.com/Kuasar137/aanet-examples](https://github.com/Kuasar137/aanet-examples) —
-runnable Python scripts for lesson #1 and #2 above, tested against the live
+runnable Python scripts for lessons #1 and #2 above (plus the orchestrator-side `balance_low` warning), tested against the live
 service.
